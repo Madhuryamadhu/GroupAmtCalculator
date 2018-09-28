@@ -7,6 +7,7 @@ var html2="";
 var totalAmount=0;
 var finalAmountHtml="";
 var perHeadAmount=0;
+var noOfPpl=0;
 var finalDetailList="";
 var name="";
 var amount="";
@@ -33,16 +34,12 @@ $(document).ready(function(){
 		window.location.reload();
 	});
 
-	$('#details').on( "click", function() {
+	 $('#details').on( "click", function() {
 
-		var y = document.getElementById("showDetails");
-		if (y.style.display === "none") {
-			$("#finalDetails").hide();
-			y.style.display = "block";
-		} else {
-			$("#finalDetails").show();
-			y.style.display = "none";
-		}
+		$("#showDetails").show()
+		$("#finalDetails").hide();
+	 
+	
 	});
 
 	$('#haveMore').on( "click", function() {
@@ -82,8 +79,8 @@ $(document).ready(function(){
 		}else{
 
 		addingToMap(name,amount,reason);
-		perHeadAmount=Object.keys(nameAmountMap).length;
-		perHeadAmount=Math.round(parseFloat(totalAmount/perHeadAmount));
+		noOfPpl=Object.keys(nameAmountMap).length;
+		perHeadAmount=Math.round(parseFloat(totalAmount/noOfPpl));
 		for (var i in nameAmountMap) {
 			if(Math.round(parseFloat(nameAmountMap[i]))>perHeadAmount){
 				finalAmountHtml=finalAmountHtml+"<font color=\"green\" style=\"font-family:Courier New;\" size=\"6\" class=\"redFont\"><strong>"+i+" have paid "+nameAmountMap[i]+" and should get back Rs "+(nameAmountMap[i]-perHeadAmount)+"!!</strong></font><br>";
